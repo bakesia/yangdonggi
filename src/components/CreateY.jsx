@@ -1,25 +1,35 @@
 import { useState } from "react";
+import { FaBucket } from "react-icons/fa6";
 import { UseTodoStore } from "../store/UseTodoStore";
 
-export default function CreateY({ onClose }) {
-  const [title, setTitle] = useState("");
-  const [size, setSize] = useState("소");
-
-  const addTodo = UseTodoStore((state) => state.addTodo);
+export default function CreateY({
+  isEdit,
+  initialTitle = "",
+  inititalSize = "소",
+  onClose,
+  onSubmit,
+}) {
+  const [title, setTitle] = useState(initialTitle);
+  const [size, setSize] = useState(inititalSize);
+  const selectedDate = UseTodoStore((state) => state.selectedDate);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!title.trim()) return alert("할 일을 입력해 주세요.");
 
-    addTodo({ title, size, done: false });
+    onSubmit({ title, size, selectedDate });
+    // console.log({ title, size, selectedDate });
     onClose();
   };
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-lg w-96 max-w-full mx-4">
       <div className="flex justify-between mb-4">
-        <h2 className="text-xl font-bold">🪣 새 양동이 만들기</h2>
+        <h2 className="text-xl font-bold flex gap-2">
+          <FaBucket className="mt-1" />
+          {isEdit ? "양동이 수정하기" : "양동이 만들기"}
+        </h2>
         <button
           type="button"
           onClick={onClose}
@@ -64,7 +74,9 @@ export default function CreateY({ onClose }) {
             type="submit"
             className="px-4 py-2 rounded bg-sky-500 text-white font-bold hover:bg-sky-700 transition"
           >
-            🪣 생성
+            <span className="flex gap-2">
+              <FaBucket className="mt-1" /> 생성
+            </span>
           </button>
         </div>
       </form>

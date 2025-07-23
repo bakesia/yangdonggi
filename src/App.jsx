@@ -7,9 +7,9 @@ import "./App.css";
 function App() {
   return (
     <BrowserRouter>
-      <div className="bg-slate-100 p-3">
+      <div className="bg-slate-100 p-3 min-h-[100vh]">
         <Header />
-        <main>
+        <main className="justify-center items-center">
           <Routes>
             <Route path="/" element={<DashBoardPage />} />
             <Route path="/create" element={<CreateY />} />
