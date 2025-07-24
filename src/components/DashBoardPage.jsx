@@ -22,7 +22,7 @@ export default function DashBoardPage() {
       <div className="bg-white rounded-lg p-3 m-3 w-full min-h-[50vh]">
         {filteredTodos.length === 0 ? (
           <div className="flex flex-col justify-center items-center text-gray-400">
-            <span>할 일이 없습니다. 😴</span>
+            <span>오늘 해야할 일이 없습니다... 😴</span>
           </div>
         ) : (
           filteredTodos.map((todo, idx) => (
@@ -38,7 +38,7 @@ export default function DashBoardPage() {
         {filteredTodos.length > 0 &&
         filteredTodos.every((todo) => todo.done === true) ? (
           <span className="flex justify-center items-center m-5 text-gray-400 animate-bounce">
-            모든 할 일을 다 끝마쳤어요 ~🎊
+            모든 할 일을 다 끝마쳤어요~ 🎉
           </span>
         ) : (
           ""

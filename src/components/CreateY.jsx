@@ -5,12 +5,12 @@ import { UseTodoStore } from "../store/UseTodoStore";
 export default function CreateY({
   isEdit,
   initialTitle = "",
-  inititalSize = "소",
+  initialSize = "소",
   onClose,
   onSubmit,
 }) {
   const [title, setTitle] = useState(initialTitle);
-  const [size, setSize] = useState(inititalSize);
+  const [size, setSize] = useState(initialSize);
   const selectedDate = UseTodoStore((state) => state.selectedDate);
 
   const handleSubmit = (e) => {
